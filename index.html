@@ -60,7 +60,7 @@
   }
 
   /* 공통 섹션 여백 */
-  section{padding:84px 32px}
+  section{padding:54px 32px}
   .eyebrow{
     font-family:var(--cormorant);
     font-size:13px;
@@ -103,21 +103,23 @@
 
   /* ===================== 커버 ===================== */
   .cover{
-    height:100svh;
-    min-height:600px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:space-between;
-    padding:64px 32px 42px;
-    position:relative;
+    padding:46px 30px 44px;
     text-align:center;
+    gap:30px;
   }
   .cover__label{
     font-family:var(--cormorant);
     font-size:14px;letter-spacing:.5em;text-transform:uppercase;color:var(--muted)
   }
-  .cover__center{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .cover__photo{
+    width:100%;
+    display:block;
+    border-radius:2px;
+  }
+  .cover__bottom{display:flex;flex-direction:column;align-items:center;gap:14px}
   .cover__names{
     font-family:var(--cormorant);
     font-weight:400;
@@ -130,16 +132,11 @@
   }
   .cover__kor span{color:var(--accent);font-size:19px;margin:0 10px;vertical-align:3px}
   .cover__meta{font-size:14px;color:var(--muted);letter-spacing:.02em;line-height:1.9}
-  .scrolldown{
-    width:1px;height:46px;background:linear-gradient(var(--faint),transparent);
-    margin-top:6px;animation:pulse 2.4s ease-in-out infinite
-  }
-  @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
 
   /* ===================== 말씀 ===================== */
   .verse{
     text-align:center;background:var(--bg);
-    padding:96px 34px 88px
+    padding:54px 34px
   }
   .verse__text{
     font-family:var(--serif);
@@ -221,13 +218,10 @@
   /* ===================== 오시는 길 ===================== */
   .location{background:var(--paper)}
   .map{
-    width:100%;aspect-ratio:4/3;border-radius:4px;border:1px solid var(--line);
-    background:var(--bg);overflow:hidden;position:relative;margin-bottom:18px;
-    display:flex;align-items:center;justify-content:center;text-align:center
+    width:100%;border-radius:4px;border:1px solid var(--line);
+    background:var(--bg);overflow:hidden;margin-bottom:18px;padding:16px 14px
   }
-  .map iframe{width:100%;height:100%;border:0}
-  .map__ph{padding:24px;color:var(--muted)}
-  .map__ph .pin{font-size:30px;color:var(--accent);margin-bottom:8px}
+  .map svg{display:block;width:100%;height:auto}
   .map__addr{text-align:center;margin-bottom:8px}
   .map__addr .name{font-family:var(--serif);font-size:17px}
   .map__addr .road{font-size:14px;color:var(--muted);margin-top:6px}
@@ -275,7 +269,7 @@
   .copy:active{background:var(--paper)}
 
   /* ===================== 푸터 ===================== */
-  .footer{background:var(--paper);text-align:center;padding:70px 32px 90px}
+  .footer{background:var(--paper);text-align:center;padding:54px 32px 62px}
   .footer__names{font-family:var(--cormorant);font-size:18px;letter-spacing:.3em;
     color:var(--muted);text-transform:uppercase;margin-bottom:8px}
   .footer__msg{font-family:var(--serif);font-size:16px;margin-bottom:30px}
@@ -302,21 +296,21 @@
 <div class="frame">
 
   <!-- ============ 커버 ============ -->
-  <!-- 배경 사진: --bg-img 의 파일명을 바꾸세요. 더 진하게/연하게는 --bg-opacity 조절 (커버는 살짝 진하게) -->
-  <section class="cover photo-bg" style="--bg-img:url('images/date1.jpg'); --bg-opacity:.22">
+  <section class="cover">
     <div class="cover__label">We're getting married</div>
 
-    <div class="cover__center">
+    <!-- 메인 사진: 3·4번째 컷을 세로로 이은 이미지 (images/main.jpg) -->
+    <img class="cover__photo" src="images/main.jpg" alt="사공걸 · 신루희" />
+
+    <div class="cover__bottom">
       <div class="cover__names">Sagong Geol &nbsp;·&nbsp; Shin Ruhee</div>
       <div class="cover__kor">사공걸<span>♥</span>신루희</div>
-      <div class="cover__meta">2027. 02. 13. SAT · 오후 5시 30분<br>아펠가모 공덕</div>
+      <div class="cover__meta">2027. 02. 13. SAT · 오후 5시 30분<br>아펠가모 공덕 · 7층 마리에홀</div>
     </div>
-
-    <div class="scrolldown"></div>
   </section>
 
   <!-- ============ 말씀 ============ -->
-  <section class="verse reveal photo-bg" style="--bg-img:url('images/date2.jpg'); --bg-opacity:.10">
+  <section class="verse reveal">
     <div class="eyebrow">Romans 8 : 28</div>
     <p class="verse__text">
       우리가 알거니와<br>
@@ -331,24 +325,20 @@
   <!-- ============ 인사말 ============ -->
   <section class="greeting reveal">
     <div class="eyebrow">Invitation</div>
-    <p class="greeting__poem">
-      서로 마주보던 두 사람이<br>
-      이제 같은 곳을 바라보며<br>
-      한 <span class="em">길</span>을 걷고자 합니다.
-    </p>
     <p class="greeting__body">
-      두 사람이 사랑으로 만나 새로운 시작을 함께하려 합니다.<br>
-      바쁘시더라도 귀한 걸음 하시어<br>
-      축복해 주시면 더없는 기쁨이겠습니다.
+      저희 두 사람이 사랑으로 만나<br>
+      하나의 가정을 이루게 되었습니다.<br>
+      귀한 걸음 하시어 축복해 주시면<br>
+      더없는 기쁨으로 간직하겠습니다.
     </p>
 
     <div class="parents">
       <div class="row">
-        <span class="pn">아버지 성함</span><span class="dot">●</span><span class="pn">어머니 성함</span>
+        <span class="pn">사공병수 · 손종미</span>
         <span class="rel">의 아들</span><span class="child">사공걸</span>
       </div>
       <div class="row">
-        <span class="pn">아버지 성함</span><span class="dot">●</span><span class="pn">어머니 성함</span>
+        <span class="pn">신권수 · 안복심</span>
         <span class="rel">의 딸</span><span class="child">신루희</span>
       </div>
     </div>
@@ -359,7 +349,7 @@
     <div class="eyebrow">The Wedding Day</div>
     <div class="info__date">2027 . 02 . 13</div>
     <div class="info__sub">토요일 오후 5시 30분</div>
-    <div class="info__place">아펠가모 공덕</div>
+    <div class="info__place">아펠가모 공덕 · 7층 마리에홀</div>
 
     <div class="cal">
       <div class="cal__grid" id="cal"></div>
@@ -380,22 +370,68 @@
     <h2 class="heading">오시는 길</h2>
 
     <div class="map">
-      <!-- 옵션 A) 네이버 지도 그대로 임베드하려면 아래 iframe 의 src 를 채우세요.
-           네이버지도 > 장소검색 > 공유 > 'URL 복사' 한 주소를 넣어도 되고,
-           정식 지도는 네이버클라우드 Maps API 키가 필요합니다(무료 쿼터).
-      <iframe src="여기에_네이버지도_URL" loading="lazy"></iframe>
-      -->
-      <div class="map__ph">
-        <div class="pin">◍</div>
-        <div>아펠가모 공덕</div>
-        <div style="font-size:13px;margin-top:4px">아래 버튼으로 길찾기</div>
-      </div>
+      <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" width="100%" role="img" aria-label="아펠가모 공덕 약도">
+<path d="M8,72 L150,58 L300,52 L360,64 L412,106" fill="none" stroke="#26374d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M360,64 L345,150 L322,262" fill="none" stroke="#26374d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M360,64 L412,182" fill="none" stroke="#63738a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M250,54 L245,140 L240,272" fill="none" stroke="#26374d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="30" y="60" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">마포대교</text>
+<text x="30" y="60" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="#7c8794">마포대교</text>
+<text x="150" y="48" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">마포대로</text>
+<text x="150" y="48" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="#7c8794">마포대로</text>
+<text x="380" y="50" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="11" text-anchor="middle" font-weight="600" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">공덕오거리</text>
+<text x="380" y="50" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="11" text-anchor="middle" font-weight="600" fill="#3a3f45">공덕오거리</text>
+<circle cx="235" cy="40" r="2.6" fill="#26374d"/>
+<text x="235" y="32" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">마포우체국</text>
+<text x="235" y="32" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="#3a3f45">마포우체국</text>
+<circle cx="305" cy="116" r="2.6" fill="#26374d"/>
+<text x="305" y="106" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">글래드호텔</text>
+<text x="305" y="106" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="middle" fill="#3a3f45">글래드호텔</text>
+<circle cx="332" cy="214" r="2.6" fill="#26374d"/>
+<text x="340" y="217" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="start" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">이마트</text>
+<text x="340" y="217" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="start" fill="#3a3f45">이마트</text>
+<circle cx="222" cy="192" r="9" fill="#26374d"/>
+<text x="222" y="195.4" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">10</text>
+<text x="208" y="189" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="end" font-weight="600" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">공덕역</text>
+<text x="208" y="189" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="end" font-weight="600" fill="#3a3f45">공덕역</text>
+<text x="208" y="200" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="8.2" text-anchor="end" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">경의중앙선·공항철도</text>
+<text x="208" y="200" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="8.2" text-anchor="end" fill="#7c8794">경의중앙선·공항철도</text>
+<circle cx="315" cy="182" r="9" fill="#a08c6a"/>
+<text x="315" y="185.4" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">7</text>
+<text x="327" y="179" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="start" font-weight="600" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">공덕역</text>
+<text x="327" y="179" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="10.5" text-anchor="start" font-weight="600" fill="#3a3f45">공덕역</text>
+<text x="327" y="190" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="8.6" text-anchor="start" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">5·6호선</text>
+<text x="327" y="190" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="8.6" text-anchor="start" fill="#7c8794">5·6호선</text>
+<path d="M231,192 L248,190" fill="none" stroke="#a08c6a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2,4"/>
+<rect x="248" y="158" width="44" height="64" rx="1.5" fill="#26374d" stroke="#a08c6a" stroke-width="2"/>
+<rect x="255" y="167" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="268" y="167" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="281" y="167" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="255" y="178" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="268" y="178" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="281" y="178" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="255" y="189" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="268" y="189" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="281" y="189" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="255" y="200" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="268" y="200" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="281" y="200" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="255" y="211" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="268" y="211" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="281" y="211" width="8" height="7" fill="#ffffff" opacity="0.92"/>
+<rect x="248" y="155" width="44" height="3" fill="#a08c6a"/>
+<path d="M270.0,155 C262.0,139 263.5,127 270.0,127 C276.5,127 278.0,139 270.0,155 Z" fill="#a08c6a" stroke="#ffffff" stroke-width="1"/>
+<circle cx="270.0" cy="138" r="3.4" fill="#ffffff"/>
+<text x="270.0" y="238" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="14" text-anchor="middle" font-weight="800" letter-spacing="0.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">아펠가모 공덕</text>
+<text x="270.0" y="238" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="14" text-anchor="middle" font-weight="800" letter-spacing="0.5" fill="#26374d">아펠가모 공덕</text>
+<text x="270.0" y="250" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="8" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round">효성해링턴스퀘어 B동 7층</text>
+<text x="270.0" y="250" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif" font-size="8" text-anchor="middle" fill="#7c8794">효성해링턴스퀘어 B동 7층</text>
+</svg>
     </div>
 
     <div class="map__addr">
-      <div class="name">아펠가모 공덕</div>
-      <div class="road">서울 마포구 마포대로 92 효성해링턴스퀘어 (주소 확인 필요)</div>
-      <div class="tel">TEL. 02-0000-0000</div>
+      <div class="name">아펠가모 공덕 · 7층 마리에홀</div>
+      <div class="road">서울 마포구 마포대로 92 효성해링턴스퀘어</div>
     </div>
 
     <!-- 길찾기 버튼: API 키 없이 작동 (앱/웹으로 바로 연결) -->
@@ -408,15 +444,11 @@
     <div class="way">
       <div class="item">
         <div class="k">지하철</div>
-        <div class="v">5·6호선, 경의중앙선, 공항철도 공덕역 ○번 출구 도보 ○분<br>(정확한 출구·소요시간 확인 필요)</div>
+        <div class="v">공덕역 하차 · 5호선 · 6호선 · 경의중앙선 · 공항철도</div>
       </div>
       <div class="item">
         <div class="k">주차</div>
-        <div class="v">건물 내 주차장 이용 가능 · ○시간 무료 (주차 안내 확인 필요)</div>
-      </div>
-      <div class="item">
-        <div class="k">버스</div>
-        <div class="v">공덕역 정류장 하차 (노선 번호 확인 필요)</div>
+        <div class="v">건물 내 주차장 이용 가능 · 2시간 무료</div>
       </div>
     </div>
   </section>
@@ -436,12 +468,8 @@
         <button class="acc__head"><span class="side">신랑 측</span><span class="arw">▾</span></button>
         <div class="acc__body">
           <div class="acc__row">
-            <div class="who"><b>사공걸</b><span class="n">○○은행 000-0000-000000</span></div>
-            <button class="copy" data-acc="○○은행 000-0000-000000 사공걸">복사</button>
-          </div>
-          <div class="acc__row">
-            <div class="who"><b>아버지 성함</b><span class="n">○○은행 000-0000-000000</span></div>
-            <button class="copy" data-acc="○○은행 000-0000-000000 (신랑 부)">복사</button>
+            <div class="who"><b>사공걸</b><span class="n">신한은행 110-389983814</span></div>
+            <button class="copy" data-acc="110-389983814">복사</button>
           </div>
         </div>
       </div>
@@ -450,12 +478,8 @@
         <button class="acc__head"><span class="side">신부 측</span><span class="arw">▾</span></button>
         <div class="acc__body">
           <div class="acc__row">
-            <div class="who"><b>신루희</b><span class="n">○○은행 000-0000-000000</span></div>
-            <button class="copy" data-acc="○○은행 000-0000-000000 신루희">복사</button>
-          </div>
-          <div class="acc__row">
-            <div class="who"><b>어머니 성함</b><span class="n">○○은행 000-0000-000000</span></div>
-            <button class="copy" data-acc="○○은행 000-0000-000000 (신부 모)">복사</button>
+            <div class="who"><b>신루희</b><span class="n">신한은행 110-5022195690</span></div>
+            <button class="copy" data-acc="110-5022195690">복사</button>
           </div>
         </div>
       </div>
@@ -463,7 +487,7 @@
   </section>
 
   <!-- ============ 푸터 ============ -->
-  <footer class="footer reveal photo-bg" style="--bg-img:url('images/date3.jpg'); --bg-opacity:.12">
+  <footer class="footer reveal">
     <div class="footer__names">Geol &amp; Ruhee</div>
     <div class="footer__msg">2027. 02. 13<br>저희의 시작을 함께해 주세요</div>
     <button class="share" id="share">🔗 청첩장 공유하기</button>
