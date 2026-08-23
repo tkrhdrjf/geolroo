@@ -187,8 +187,8 @@
     text-align:center;font-size:46px;font-weight:300;letter-spacing:.04em;color:var(--ink);
     line-height:1.1
   }
-  .info__sub{text-align:center;color:var(--muted);font-size:14px;margin:12px 0 4px;letter-spacing:.06em}
-  .info__place{text-align:center;font-family:var(--serif);font-size:17px;margin-bottom:36px}
+  .info__sub{text-align:center;color:#5c574f;font-size:17px;margin:14px 0 6px;letter-spacing:.05em}
+  .info__place{text-align:center;font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:36px;letter-spacing:.02em}
 
   /* 달력 */
   .cal{
@@ -413,7 +413,6 @@
     <div class="map__btns">
       <a href="https://map.naver.com/p/search/아펠가모 공덕" target="_blank" rel="noopener">네이버지도</a>
       <a href="https://place.map.kakao.com/630786038" target="_blank" rel="noopener">카카오맵</a>
-      <a href="https://tmap.life/route/search?goalname=아펠가모 공덕" target="_blank" rel="noopener">T맵</a>
     </div>
 
     <div class="way">
@@ -487,6 +486,7 @@ const WEDDING = new Date('2027-02-13T17:30:00+09:00');
     el.textContent=d; grid.appendChild(el);
   });
   const year=2027, month=1; // 0-indexed → 1 = 2월
+  const holidays=[6,8,9];   // 설 연휴 (7일은 일요일이라 자동 빨간색)
   const first=new Date(year,month,1).getDay();
   const last=new Date(year,month+1,0).getDate();
   for(let i=0;i<first;i++){
@@ -495,7 +495,7 @@ const WEDDING = new Date('2027-02-13T17:30:00+09:00');
   for(let d=1;d<=last;d++){
     const e=document.createElement('div');
     const dow=new Date(year,month,d).getDay();
-    e.className='day'+(dow===0?' sun':'')+(d===13?' mark':'');
+    e.className='day'+((dow===0||holidays.includes(d))?' sun':'')+(d===13?' mark':'');
     e.textContent=d; grid.appendChild(e);
   }
 })();
