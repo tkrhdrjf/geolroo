@@ -28,7 +28,7 @@
     --faint:#b4bab0;      /* 더 옅은 회색 */
     --line:#e7eae3;       /* 헤어라인 */
     --paper:#f6f8f4;      /* 살짝 들어간 카드 배경 (아이보리그린) */
-    --accent:#6b7c5a;     /* 세이지 그린 포인트 (메인사진 톤) */
+    --accent:#44573a;     /* 딥 그린 포인트 (진하게, 가시성) */
     --serif:'Nanum Myeongjo', serif;
     --cormorant:'Cormorant Garamond', serif;
     --sans:'Pretendard', sans-serif;
@@ -63,7 +63,8 @@
   section{padding:54px 32px}
   .eyebrow{
     font-family:var(--cormorant);
-    font-size:13px;
+    font-size:15px;
+    font-weight:700;
     letter-spacing:.42em;
     text-transform:uppercase;
     color:var(--accent);
@@ -135,7 +136,7 @@
     font-size:34px;
     letter-spacing:.12em;
   }
-  .cover__kor span{color:var(--accent);font-size:21px;margin:0 11px;vertical-align:3px}
+  .cover__kor span{color:var(--accent);font-size:25px;margin:0 12px;vertical-align:2px}
   .cover__meta{font-size:15.5px;color:var(--muted);letter-spacing:.02em;line-height:1.95}
 
   /* ===================== 말씀 ===================== */
@@ -148,10 +149,10 @@
     font-size:20px;line-height:2.5;color:var(--ink);
     letter-spacing:.02em;word-break:keep-all
   }
-  .verse__text .em{color:var(--accent);font-weight:700}
+  .verse__text .em{color:var(--accent);font-weight:800;font-size:1.12em}
   .verse__ref{
     margin-top:34px;font-family:var(--cormorant);font-size:14px;
-    letter-spacing:.18em;color:var(--muted)
+    letter-spacing:.18em;color:var(--accent);font-weight:600
   }
   .verse__ref::before,.verse__ref::after{
     content:'';display:inline-block;width:22px;height:1px;background:var(--line);
